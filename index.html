@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-Z Jolly Phonics: ฝึกออกเสียงตามมาตรฐาน</title>
+    <title>A-Z Jolly Phonics: ฝึกอ่านชื่อตัวอักษรและเสียง</title>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&family=Mali:wght@600&display=swap');
@@ -139,11 +139,11 @@
 
     <div class="container">
         <div id="category-page" style="display: none;">
-            <h1>🎉 A-Z Jolly Phonics: ฝึกออกเสียงตามมาตรฐาน</h1>
+            <h1>🎉 A-Z Jolly Phonics: ฝึกอ่านชื่อตัวอักษรและเสียง</h1>
         </div>
 
         <div id="lesson-page">
-            <h1 id="lesson-title" style="font-size: 2.5em;">A-Z Jolly Phonics Sounds 🔤</h1> 
+            <h1 id="lesson-title" style="font-size: 2.5em;">A-Z Name & Phonics 🔤</h1> 
             <div id="vocab-card">
                 <div id="alphabet-display" class="alphabet-display">
                     <span id="alphabet-letter" class="word alphabet-letter">...</span> 
@@ -158,12 +158,12 @@
                 <button id="next-btn" class="nav-btn">ถัดไป ▶️</button>
             </div>
             <div class="control-group">
+                <button onclick="speakLetterName()" class="audio-btn">Letter Name (EN) 🗣️</button>
                 <button onclick="speakPhonicsSound()" class="phonics-btn">Phonics Sound (EN) 📢</button>
-                <button onclick="speakEnglishWord()" class="audio-btn">Word (EN) 🔊</button>
                 <button onclick="speakText(currentVocab.thai, 'th-TH')" class="audio-btn">Thai (TH) 🔊</button>
             </div>
             <div class="control-group">
-                <button id="play-pause-btn" class="play-btn">Play All 🔄</button>
+                <button id="play-pause-btn" class="play-btn">Play All (4 Steps) 🔄</button>
                 <button id="stop-btn" class="play-btn">Stop ⏹️</button>
             </div>
         </div>
@@ -171,38 +171,38 @@
 
     <script>
         const vocabularyData = {
-            // ปรับแก้ข้อมูลกลับไปใช้ Jolly Phonics (Pure Sounds)
+            // ชุดข้อมูล Jolly Phonics (เพิ่ม letterName เพื่ออ่านชื่อตัวอักษร)
             "อักษร A-Z 🔤": [
-                { letter: "A, a 🐜", phonics: "/ă/", phonicsSound: "a", english: "Ant", thai: "มด" }, 
-                { letter: "B, b 🏀", phonics: "/b/", phonicsSound: "b", english: "Ball", thai: "ลูกบอล" }, // Pure sound (No 'uh')
-                { letter: "C, c 🐈", phonics: "/k/", phonicsSound: "k", english: "Cat", thai: "แมว" }, // Pure sound (No 'uh')
-                { letter: "D, d 🐶", phonics: "/d/", phonicsSound: "d", english: "Dog", thai: "สุนัข" }, // Pure sound (No 'uh')
-                { letter: "E, e 🐘", phonics: "/ĕ/", phonicsSound: "e", english: "Elephant", thai: "ช้าง" },
-                { letter: "F, f 🐟", phonics: "/f/", phonicsSound: "f", english: "Fish", thai: "ปลา" }, // Pure sound (No 'uh')
-                { letter: "G, g 🦒", phonics: "/g/", phonicsSound: "g", english: "Giraffe", thai: "ยีราฟ" }, // Pure sound (No 'uh')
-                { letter: "H, h 🏠", phonics: "/h/", phonicsSound: "h", english: "House", thai: "บ้าน" }, // Aspiration sound
-                { letter: "I, i 🍦", phonics: "/ĭ/", phonicsSound: "i", english: "Ice cream", thai: "ไอศกรีม" },
-                { letter: "J, j 🏺", phonics: "/j/", phonicsSound: "j", english: "Jar", thai: "โถ, ไห" }, // Pure sound (No 'uh')
-                { letter: "K, k 🔑", phonics: "/k/", phonicsSound: "k", english: "Key", thai: "กุญแจ" }, // Pure sound (No 'uh')
-                { letter: "L, l 🦁", phonics: "/l/", phonicsSound: "l", english: "Lion", thai: "สิงโต" }, // Pure sound (No 'uh')
-                { letter: "M, m 🐒", phonics: "/m/", phonicsSound: "m", english: "Monkey", thai: "ลิง" }, // Pure sound (Closed lips)
-                { letter: "N, n 👃", phonics: "/n/", phonicsSound: "n", english: "Nose", thai: "จมูก" }, // Pure sound (Tongue tip)
-                { letter: "O, o 🍊", phonics: "/ŏ/", phonicsSound: "o", english: "Orange", thai: "ส้ม" },
-                { letter: "P, p 🐷", phonics: "/p/", phonicsSound: "p", english: "Pig", thai: "หมู" }, // Pure sound (No 'uh')
-                { letter: "Q, q 👑", phonics: "/kw/", phonicsSound: "kw", english: "Queen", thai: "พระราชินี" }, // kw sound
-                { letter: "R, r 🐰", phonics: "/r/", phonicsSound: "r", english: "Rabbit", thai: "กระต่าย" }, // Pure sound (No 'uh')
-                { letter: "S, s ☀️", phonics: "/s/", phonicsSound: "s", english: "Sun", thai: "ดวงอาทิตย์" }, // Pure sound (Sizzle)
-                { letter: "T, t 🐯", phonics: "/t/", phonicsSound: "t", english: "Tiger", thai: "เสือ" }, // Pure sound (No 'uh')
-                { letter: "U, u ☂️", phonics: "/ŭ/", phonicsSound: "u", english: "Umbrella", thai: "ร่ม" },
-                { letter: "V, v 🎻", phonics: "/v/", phonicsSound: "v", english: "Violin", thai: "ไวโอลิน" }, // Pure sound (No 'uh')
-                { letter: "W, w ⌚", phonics: "/w/", phonicsSound: "w", english: "Watch", thai: "นาฬิกาข้อมือ" }, // Pure sound (No 'uh')
-                { letter: "X, x 🎹", phonics: "/ks/", phonicsSound: "kss", english: "Xylophone", thai: "ระนาดฝรั่ง" }, // ks sound (as in 'fox')
-                { letter: "Y, y ⛵", phonics: "/y/", phonicsSound: "y", english: "Yacht", thai: "เรือยอชท์" }, // Pure sound (No 'uh')
-                { letter: "Z, z 🦓", phonics: "/z/", phonicsSound: "z", english: "Zebra", thai: "ม้าลาย" } // Pure sound (Buzz)
+                { letter: "A, a 🐜", letterName: "A", phonics: "/ă/", phonicsSound: "a", english: "Ant", thai: "มด" }, 
+                { letter: "B, b 🏀", letterName: "BEE", phonics: "/b/", phonicsSound: "b", english: "Ball", thai: "ลูกบอล" }, 
+                { letter: "C, c 🐈", letterName: "SEE", phonics: "/k/", phonicsSound: "k", english: "Cat", thai: "แมว" },
+                { letter: "D, d 🐶", letterName: "DEE", phonics: "/d/", phonicsSound: "d", english: "Dog", thai: "สุนัข" },
+                { letter: "E, e 🐘", letterName: "E", phonics: "/ĕ/", phonicsSound: "e", english: "Elephant", thai: "ช้าง" },
+                { letter: "F, f 🐟", letterName: "EF", phonics: "/f/", phonicsSound: "f", english: "Fish", thai: "ปลา" },
+                { letter: "G, g 🦒", letterName: "GEE", phonics: "/g/", phonicsSound: "g", english: "Giraffe", thai: "ยีราฟ" },
+                { letter: "H, h 🏠", letterName: "H", phonics: "/h/", phonicsSound: "h", english: "House", thai: "บ้าน" },
+                { letter: "I, i 🍦", letterName: "I", phonics: "/ĭ/", phonicsSound: "i", english: "Ice cream", thai: "ไอศกรีม" },
+                { letter: "J, j 🏺", letterName: "JAY", phonics: "/j/", phonicsSound: "j", english: "Jar", thai: "โถ, ไห" }, 
+                { letter: "K, k 🔑", letterName: "KAY", phonics: "/k/", phonicsSound: "k", english: "Key", thai: "กุญแจ" },
+                { letter: "L, l 🦁", letterName: "EL", phonics: "/l/", phonicsSound: "l", english: "Lion", thai: "สิงโต" }, 
+                { letter: "M, m 🐒", letterName: "EM", phonics: "/m/", phonicsSound: "m", english: "Monkey", thai: "ลิง" }, 
+                { letter: "N, n 👃", letterName: "EN", phonics: "/n/", phonicsSound: "n", english: "Nose", thai: "จมูก" }, 
+                { letter: "O, o 🍊", letterName: "O", phonics: "/ŏ/", phonicsSound: "o", english: "Orange", thai: "ส้ม" },
+                { letter: "P, p 🐷", letterName: "PEE", phonics: "/p/", phonicsSound: "p", english: "Pig", thai: "หมู" },
+                { letter: "Q, q 👑", letterName: "KYU", phonics: "/kw/", phonicsSound: "kw", english: "Queen", thai: "พระราชินี" },
+                { letter: "R, r 🐰", letterName: "AR", phonics: "/r/", phonicsSound: "r", english: "Rabbit", thai: "กระต่าย" },
+                { letter: "S, s ☀️", letterName: "ES", phonics: "/s/", phonicsSound: "s", english: "Sun", thai: "ดวงอาทิตย์" },
+                { letter: "T, t 🐯", letterName: "TEE", phonics: "/t/", phonicsSound: "t", english: "Tiger", thai: "เสือ" },
+                { letter: "U, u ☂️", letterName: "U", phonics: "/ŭ/", phonicsSound: "u", english: "Umbrella", thai: "ร่ม" },
+                { letter: "V, v 🎻", letterName: "VEE", phonics: "/v/", phonicsSound: "v", english: "Violin", thai: "ไวโอลิน" },
+                { letter: "W, w ⌚", letterName: "W", phonics: "/w/", phonicsSound: "w", english: "Watch", thai: "นาฬิกาข้อมือ" },
+                { letter: "X, x 🎹", letterName: "EX", phonics: "/ks/", phonicsSound: "kss", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
+                { letter: "Y, y ⛵", letterName: "WHY", phonics: "/y/", phonicsSound: "y", english: "Yacht", thai: "เรือยอชท์" }, 
+                { letter: "Z, z 🦓", letterName: "ZEE", phonics: "/z/", phonicsSound: "z", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
         // ----------------------------------------------------
-        // ส่วน JavaScript (Logics) - *เหมือนเดิม*
+        // ส่วน JavaScript (Logics)
         // ----------------------------------------------------
         const lessonPage = document.getElementById('lesson-page');
         const thaiWord = document.getElementById('thai-word');
@@ -237,7 +237,7 @@
                     utterance.volume = 1.0; 
                     utterance.rate = 1.1; 
                 } else {
-                    // การออกเสียง Pure Sound (Jolly) ควรใช้ Rate ช้าลงเล็กน้อย (0.9) เพื่อให้เสียงไม่เพี้ยน
+                    // ใช้ Rate 0.9 สำหรับ Phonics Pure Sound
                     utterance.volume = 1.0; 
                     utterance.rate = 0.9; 
                 }
@@ -267,12 +267,19 @@
             }
         }
 
-        // ฟังก์ชันสำหรับเล่นเสียง Phonics (Pure Sound)
         function speakPhonicsSound() {
             if(currentVocab.phonicsSound) {
                  speakText(currentVocab.phonicsSound, 'en-US');
             }
         }
+        
+        // ฟังก์ชันใหม่: พูดชื่อตัวอักษรเท่านั้น
+        function speakLetterName() {
+            if(currentVocab.letterName) {
+                 speakText(currentVocab.letterName, 'en-US');
+            }
+        }
+
 
         // --- Game Logic ---
         function startLesson(category) {
@@ -291,7 +298,7 @@
                 
                 // แสดงผล
                 alphabetLetter.textContent = currentVocab.letter; 
-                phonicsSoundDisplay.textContent = currentVocab.phonics; // แสดงสัญลักษณ์ Jolly Phonics
+                phonicsSoundDisplay.textContent = `${currentVocab.letterName} / ${currentVocab.phonics}`; // แสดงชื่อและเสียง Phonics
                 alphabetWord.textContent = currentVocab.english; 
                 thaiWord.textContent = currentVocab.thai; 
 
@@ -317,7 +324,7 @@
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex >= currentCategoryVocabs.length - 1;
             }
-            playPauseBtn.textContent = isPlaying ? 'Pause ⏸️' : 'Play All 🔄';
+            playPauseBtn.textContent = isPlaying ? 'Pause ⏸️' : 'Play All (4 Steps) 🔄';
         }
 
         function nextVocab() {
@@ -344,21 +351,25 @@
             }
             const currentVocabToPlay = currentCategoryVocabs[currentIndex];
             
-            // 1. เล่นเสียง Phonics (Pure Sound)
-            speakText(currentVocabToPlay.phonicsSound, 'en-US', () => {
+            // 1. เล่นชื่อตัวอักษร (Letter Name)
+            speakText(currentVocabToPlay.letterName, 'en-US', () => {
                 
-                // 2. เมื่อ Phonics จบ เล่นเสียงคำศัพท์ (เช่น "Ant")
-                speakText(currentVocabToPlay.english, 'en-US', () => {
+                // 2. เมื่อชื่อตัวอักษรจบ เล่นเสียง Phonics (Pure Sound)
+                speakText(currentVocabToPlay.phonicsSound, 'en-US', () => {
                     
-                    // 3. เมื่อภาษาอังกฤษจบ เล่นภาษาไทย (เช่น "มด")
-                    speakText(currentVocabToPlay.thai, 'th-TH', () => {
-                        if (isPlaying) {
-                            currentIndex++;
-                            displayVocab();
-                            updateButtonState();
-                            // หน่วงเวลา 1 วินาที
-                            setTimeout(playCurrentVocabAuto, 1000); 
-                        }
+                    // 3. เมื่อ Phonics จบ เล่นเสียงคำศัพท์ (เช่น "Ant")
+                    speakText(currentVocabToPlay.english, 'en-US', () => {
+                        
+                        // 4. เมื่อภาษาอังกฤษจบ เล่นภาษาไทย (เช่น "มด")
+                        speakText(currentVocabToPlay.thai, 'th-TH', () => {
+                            if (isPlaying) {
+                                currentIndex++;
+                                displayVocab();
+                                updateButtonState();
+                                // หน่วงเวลา 1 วินาที ก่อนไปคำถัดไป
+                                setTimeout(playCurrentVocabAuto, 1000); 
+                            }
+                        });
                     });
                 });
             });
