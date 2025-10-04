@@ -16,7 +16,7 @@
             --color-background-start: #A29BFE; 
             --color-background-end: #FDCB6E; 
             --text-color: #2c3e50; 
-            --letter-color: #4ECDC4; /* New Color: Light Teal - สีตัวอักษรหลัก */
+            --letter-color: #4ECDC4; /* Light Teal - สีตัวอักษรหลัก */
             --card-color: #FFFFFF;
             --shadow-light: rgba(255, 255, 255, 0.7);
             --shadow-dark: rgba(0, 0, 0, 0.4);
@@ -50,7 +50,7 @@
             color: var(--text-color);
             font-family: 'Mali', cursive;
             font-size: 2.5em; 
-            font-weight: 700; /* ทำให้หัวข้อเป็นตัวหนา */
+            font-weight: 700; 
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 1.5rem;
         }
@@ -73,8 +73,8 @@
         .alphabet-letter {
             font-family: 'Sarabun', sans-serif; 
             font-weight: 800; 
-            font-size: 6.5em; 
-            color: var(--letter-color); /* สีเขียวอมฟ้าสดใส */
+            font-size: 6.5em; /* ขนาดตัวอักษรหลัก */
+            color: var(--letter-color); 
             line-height: 1.1;
             display: block; 
             margin-bottom: 10px; 
@@ -83,9 +83,9 @@
                          6px 6px 0 var(--shadow-dark); 
         }
         
-        /* สไตล์สำหรับไอคอน */
+        /* สไตล์สำหรับไอคอน - ปรับขนาดเป็น 6.5em เพื่อให้เท่ากับตัวอักษรหลัก */
         #alphabet-icon {
-            font-size: 3.5em; 
+            font-size: 6.5em; /* ปรับขนาดให้เท่ากับ .alphabet-letter */
             line-height: 1.1;
             display: block; 
             margin-bottom: 10px; 
@@ -125,16 +125,16 @@
         .control-row button {
             color: white;
             padding: 12px 0; 
-            border: none; /* ลบกรอบ */
-            border-radius: 50px; /* โค้งมนแบบ Capsule Shape */
+            border: none; 
+            border-radius: 50px; 
             font-size: 1.0em;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.1s ease-out;
             
             /* มิติ (Overlay Effect) - ปรับ Shadow ให้ดูนูนขึ้น */
-            box-shadow: inset 0 2px 3px var(--shadow-light), /* แสงด้านบน */
-                        0 5px 0 0 rgba(0, 0, 0, 0.3), /* เงาด้านล่างเพื่อยกขึ้น */
+            box-shadow: inset 0 2px 3px var(--shadow-light), 
+                        0 5px 0 0 rgba(0, 0, 0, 0.3), 
                         0 8px 15px rgba(0, 0, 0, 0.15); 
         }
 
@@ -150,7 +150,7 @@
         .control-row button:active { 
             transform: translateY(3px); 
             box-shadow: inset 0 2px 3px var(--shadow-dark), 
-                        0 2px 0 0 rgba(0, 0, 0, 0.2); /* ลดเงาด้านล่าง */
+                        0 2px 0 0 rgba(0, 0, 0, 0.2); 
         }
         
 
@@ -208,33 +208,33 @@
         const PAUSE_TIME = 500; 
         
         const vocabularyData = {
-            // ชุดข้อมูลที่ตัด Phonics ออกทั้งหมด
+            // ปรับปรุงค่า letterName ให้เป็น Phonetic Spelling เพื่อแก้ปัญหาเสียงนำหน้าผิดเพี้ยน
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "A", english: "Ant", thai: "มด" }, 
+                { letter: "A a", icon: "🐜", letterName: "Aay", english: "Ant", thai: "มด" }, 
                 { letter: "B b", icon: "🏀", letterName: "BEE", english: "Ball", thai: "ลูกบอล" }, 
                 { letter: "C c", icon: "🐈", letterName: "SEE", english: "Cat", thai: "แมว" },
                 { letter: "D d", icon: "🐶", letterName: "DEE", english: "Dog", thai: "สุนัข" },
-                { letter: "E e", icon: "🐘", letterName: "E", english: "Elephant", thai: "ช้าง" },
+                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, // แก้ไข E -> Ee
                 { letter: "F f", icon: "🐟", letterName: "EF", english: "Fish", thai: "ปลา" },
                 { letter: "G g", icon: "🦒", letterName: "GEE", english: "Giraffe", thai: "ยีราฟ" },
-                { letter: "H h", icon: "🏠", letterName: "H", english: "House", thai: "บ้าน" },
-                { letter: "I i", icon: "🍦", letterName: "I", english: "Ice cream", thai: "ไอศกรีม" },
+                { letter: "H h", icon: "🏠", letterName: "Aich", english: "House", thai: "บ้าน" }, // แก้ไข H -> Aich
+                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, // แก้ไข I -> Eye
                 { letter: "J j", icon: "🏺", letterName: "JAY", english: "Jar", thai: "โถ, ไห" }, 
                 { letter: "K k", icon: "🔑", letterName: "KAY", english: "Key", thai: "กุญแจ" },
                 { letter: "L l", icon: "🦁", letterName: "EL", english: "Lion", thai: "สิงโต" }, 
                 { letter: "M m", icon: "🐒", letterName: "EM", english: "Monkey", thai: "ลิง" }, 
                 { letter: "N n", icon: "👃", letterName: "EN", english: "Nose", thai: "จมูก" }, 
-                { letter: "O o", icon: "🍊", letterName: "O", english: "Orange", thai: "ส้ม" },
+                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, // แก้ไข O -> Oh
                 { letter: "P p", icon: "🐷", letterName: "PEE", english: "Pig", thai: "หมู" },
                 { letter: "Q q", letterName: "KYU", icon: "👑", english: "Queen", thai: "พระราชินี" },
                 { letter: "R r", icon: "🐰", letterName: "AR", english: "Rabbit", thai: "กระต่าย" },
                 { letter: "S s", icon: "☀️", letterName: "ES", english: "Sun", thai: "ดวงอาทิตย์" },
                 { letter: "T t", icon: "🐯", letterName: "TEE", english: "Tiger", thai: "เสือ" },
-                { letter: "U u", icon: "☂️", letterName: "U", english: "Umbrella", thai: "ร่ม" },
+                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, // แก้ไข U -> Yoo
                 { letter: "V v", icon: "🎻", letterName: "VEE", english: "Violin", thai: "ไวโอลิน" },
-                { letter: "W w", icon: "⌚", letterName: "W", english: "Watch", thai: "นาฬิกาข้อมือ" },
+                { letter: "W w", icon: "⌚", letterName: "Dubble Yoo", english: "Watch", thai: "นาฬิกาข้อมือ" }, // แก้ไข W -> Dubble Yoo
                 { letter: "X x", icon: "🎹", letterName: "EX", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
-                { letter: "Y y", icon: "⛵", letterName: "WHY", english: "Yacht", thai: "เรือยอชท์" }, 
+                { letter: "Y y", icon: "⛵", letterName: "Wai", english: "Yacht", thai: "เรือยอชท์" }, // แก้ไข Y -> Wai
                 { letter: "Z z", icon: "🦓", letterName: "ZEE", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
@@ -297,6 +297,7 @@
         // ฟังก์ชันพูดสำหรับปุ่มกด
         function speakLetterName() {
             if(currentVocab.letterName) {
+                 // ใช้ค่า letterName ที่ถูกแก้ไขแล้ว
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
@@ -318,7 +319,7 @@
             if (currentIndex < currentCategoryVocabs.length) {
                 currentVocab = currentCategoryVocabs[currentIndex];
                 
-                // แสดงผลตามโครงสร้างใหม่
+                // แสดงผล
                 alphabetLetter.textContent = currentVocab.letter; 
                 alphabetIcon.textContent = currentVocab.icon;
                 alphabetWord.textContent = currentVocab.english; 
