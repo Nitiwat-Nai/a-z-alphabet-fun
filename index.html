@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-Z ABC Practice (Mobile First)</title>
+    <title>A-Z Alphabet Fun! 🎈</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&family=Mali:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&family=Mali:wght@600&display=swap');
 
-        /* สีสันใหม่ที่สดใสและมีธีม */
+        /* สีสันและธีม */
         :root {
-            --color-primary: #FF6B6B; 
+            --color-primary: #FF6B6B; /* Coral Red - กรอบการ์ด */
             --color-secondary: #4ECDC4; 
-            --color-accent: #FFE66D; 
+            --color-accent: #FFE66D; /* Sunny Yellow - เน้นคำศัพท์ */
             --color-background-start: #A29BFE; 
             --color-background-end: #FDCB6E; 
             --text-color: #2c3e50; 
+            --letter-color: #4ECDC4; /* New Color: Light Teal - สีตัวอักษรหลัก */
             --card-color: #FFFFFF;
+            --shadow-light: rgba(255, 255, 255, 0.7);
+            --shadow-dark: rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -24,7 +27,7 @@
             background: linear-gradient(135deg, var(--color-background-start), var(--color-background-end));
             color: var(--text-color);
             margin: 0;
-            padding: 10px; /* ลด padding เพื่อให้เต็มจอมือถือ */
+            padding: 15px; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,22 +35,23 @@
             text-align: center;
         }
         
-        /* เน้นให้ container ใช้พื้นที่เต็มที่ในแนวนอนบนมือถือ */
         .container {
             background-color: var(--card-color);
-            padding: 1.5rem; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+            padding: 2rem; 
+            border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
             width: 100%;
-            max-width: 450px; /* จำกัดความกว้างสำหรับมือถือ */
+            max-width: 480px; 
             box-sizing: border-box;
-            border: 4px solid var(--color-primary); 
+            border: 5px solid var(--color-primary); 
         }
 
         h1 {
-            color: var(--color-primary);
+            color: var(--text-color);
             font-family: 'Mali', cursive;
-            font-size: 2.2em; /* ลดขนาดหัวข้อ */
+            font-size: 2.5em; 
+            font-weight: 700; /* ทำให้หัวข้อเป็นตัวหนา */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 1.5rem;
         }
 
@@ -55,36 +59,39 @@
         #vocab-card {
             background-color: var(--color-primary); 
             border-radius: 20px;
-            padding: 2rem 1.5rem;
-            min-height: 250px; 
+            padding: 2.5rem 1.5rem; 
+            min-height: 280px; 
             display: block; 
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
             border: 3px solid var(--color-accent); 
             margin-bottom: 1.5rem;
         }
 
-        /* การแสดงผลแต่ละบรรทัด */
-        .alphabet-display {
-            margin-bottom: 10px;
-        }
-        
-        /* บรรทัดที่ 1: ตัวอักษร */
+        /* ------------------------------------------------ */
+        /* การแสดงผลตัวอักษร (A a) */
+        /* ------------------------------------------------ */
         .alphabet-letter {
-            font-size: 4.5em; /* ขนาดใหญ่สำหรับตัวอักษร */
+            font-family: 'Sarabun', sans-serif; 
+            font-weight: 800; 
+            font-size: 6.5em; 
+            color: var(--letter-color); /* สีเขียวอมฟ้าสดใส */
             line-height: 1.1;
             display: block; 
             margin-bottom: 10px; 
+            /* เพิ่มมิติ (3D/Shadow) */
+            text-shadow: 4px 4px 0 var(--color-accent), 
+                         6px 6px 0 var(--shadow-dark); 
         }
         
-        /* บรรทัดที่ 2: ไอคอน */
+        /* สไตล์สำหรับไอคอน */
         #alphabet-icon {
-            font-size: 3.5em; /* ขนาดไอคอน */
+            font-size: 3.5em; 
             line-height: 1.1;
             display: block; 
             margin-bottom: 10px; 
         }
         
-        /* บรรทัดที่ 3: คำศัพท์ภาษาอังกฤษ */
+        /* สไตล์สำหรับคำศัพท์ภาษาอังกฤษ */
         #alphabet-word {
             font-size: 2.5em; 
             color: var(--color-accent); 
@@ -94,7 +101,7 @@
             margin-bottom: 15px; 
         }
 
-        /* บรรทัดที่ 4: ความหมายภาษาไทย */
+        /* สไตล์สำหรับความหมายภาษาไทย */
         #thai-word {
             font-size: 2.5em;
             color: var(--card-color); 
@@ -102,79 +109,97 @@
             display: block; 
             margin-top: 15px;
         }
-
-        /* จัดกลุ่มปุ่ม (เน้นให้ปุ่มใหญ่และเหมาะสมกับมือถือ) */
-        .control-group {
+        
+        /* ------------------------------------------------ */
+        /* จัดกลุ่มปุ่มเป็น 2 แถว และเพิ่มมิติ (Overlay) */
+        /* ------------------------------------------------ */
+        .control-row {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around; /* กระจายปุ่มให้สวยงาม */
-            gap: 0.5rem; 
-            margin-top: 1rem;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 15px; 
+            gap: 10px; 
         }
-        .control-group button {
+
+        /* ปุ่มทั้งหมด: รูปร่าง, มิติ, โค้งมน */
+        .control-row button {
             color: white;
-            border: none;
-            padding: 10px 15px; /* ขนาดปุ่มที่เหมาะสมกับมือถือ */
-            border-radius: 40px;
+            padding: 12px 0; 
+            border: none; /* ลบกรอบ */
+            border-radius: 50px; /* โค้งมนแบบ Capsule Shape */
             font-size: 1.0em;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease-in-out;
-            flex-grow: 1; /* ให้ปุ่มขยายเต็มพื้นที่ */
-            min-width: 90px; /* กำหนดความกว้างขั้นต่ำ */
-        }
-        
-        /* สีปุ่มควบคุม */
-        .audio-btn { background-color: #1ABC9C; box-shadow: 3px 0 #16A085; }
-        .nav-btn { background-color: #F39C12; box-shadow: 3px 0 #E67E22; }
-        .play-btn { background-color: #9B59B6; box-shadow: 3px 0 #8E44AD; }
-        
-        /* Media Query: สำหรับหน้าจอที่กว้างขึ้น (เช่น iPad หรือ Desktop) */
-        @media (min-width: 600px) {
-            .control-group {
-                gap: 1rem;
-            }
-            .control-group button {
-                min-width: 120px; 
-            }
+            transition: all 0.1s ease-out;
+            
+            /* มิติ (Overlay Effect) - ปรับ Shadow ให้ดูนูนขึ้น */
+            box-shadow: inset 0 2px 3px var(--shadow-light), /* แสงด้านบน */
+                        0 5px 0 0 rgba(0, 0, 0, 0.3), /* เงาด้านล่างเพื่อยกขึ้น */
+                        0 8px 15px rgba(0, 0, 0, 0.15); 
         }
 
-        /* ตัด Phonics Button Style ออก */
+        /* Hover: ดูเหมือนนูนขึ้นอีก */
+        .control-row button:hover { 
+            transform: translateY(-1px); 
+            box-shadow: inset 0 2px 3px var(--shadow-light),
+                        0 6px 0 0 rgba(0, 0, 0, 0.35), 
+                        0 10px 20px rgba(0, 0, 0, 0.2); 
+        }
+        
+        /* Active (กด): ดูเหมือนจมลง */
+        .control-row button:active { 
+            transform: translateY(3px); 
+            box-shadow: inset 0 2px 3px var(--shadow-dark), 
+                        0 2px 0 0 rgba(0, 0, 0, 0.2); /* ลดเงาด้านล่าง */
+        }
+        
+
+        /* การกำหนดสีปุ่ม */
+        .nav-btn { background-color: #F39C12; } 
+        .audio-btn { background-color: #1ABC9C; } 
+        .play-btn { background-color: #9B59B6; } 
+        
+        /* กำหนดขนาดปุ่มในแถว Navigation/Flow (4 ปุ่ม) */
+        .control-row.row-flow button {
+            flex-basis: calc(25% - 8px); 
+        }
+
+        /* กำหนดขนาดปุ่มในแถว Audio (3 ปุ่ม) */
+        .control-row.row-audio button {
+            flex-basis: calc(33.33% - 7px);
+        }
 
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div id="category-page" style="display: none;">
-            <h1>🎉 A-Z Letter and Word Practice</h1>
-        </div>
-
         <div id="lesson-page">
-            <h1 id="lesson-title">ABC: Name, Word & Thai 🗣️</h1> 
+            <h1 id="lesson-title">A-Z Alphabet Fun! 🎈</h1> 
             <div id="vocab-card">
                 <div id="alphabet-display" class="alphabet-display">
                     <span id="alphabet-letter" class="word alphabet-letter">...</span> 
+                    
                     <span id="alphabet-icon" class="alphabet-word">...</span> 
+                    
                     <span id="alphabet-word" class="word alphabet-word">...</span> 
                 </div>
                 <span id="thai-word" class="word">...</span>
             </div>
             
-            <div class="control-group">
+            <div class="control-row row-flow">
                 <button id="prev-btn" class="nav-btn">◀️ Back</button>
                 <button id="next-btn" class="nav-btn">Next ▶️</button>
-            </div>
-            <div class="control-group">
-                <button onclick="speakLetterName()" class="audio-btn">Name (EN) 🗣️</button>
-                <button onclick="speakEnglishWord()" class="audio-btn">Word (EN) 🔊</button>
-                <button onclick="speakText(currentVocab.thai, 'th-TH', 1.1)" class="audio-btn">Thai (TH) 🇹🇭</button>
-            </div>
-            <div class="control-group">
                 <button id="play-pause-btn" class="play-btn">Play All 🔄</button>
                 <button id="stop-btn" class="play-btn">Stop ⏹️</button>
             </div>
+
+            <div class="control-row row-audio">
+                <button onclick="speakLetterName()" class="audio-btn">Name 🗣️</button>
+                <button onclick="speakEnglishWord()" class="audio-btn">Word 🔊</button>
+                <button onclick="speakText(currentVocab.thai, 'th-TH', 1.1)" class="audio-btn">Thai 🇹🇭</button>
+            </div>
+
         </div>
     </div>
 
@@ -216,10 +241,8 @@
         // ----------------------------------------------------
         // ส่วน JavaScript (Logics)
         // ----------------------------------------------------
-        const lessonPage = document.getElementById('lesson-page');
         const thaiWord = document.getElementById('thai-word');
         const alphabetLetter = document.getElementById('alphabet-letter'); 
-        // ลบ phonicsSoundDisplay ออก เพราะไม่มีการใช้
         const alphabetWord = document.getElementById('alphabet-word'); 
         const alphabetIcon = document.getElementById('alphabet-icon'); 
         const playPauseBtn = document.getElementById('play-pause-btn');
@@ -257,7 +280,6 @@
                     targetVoice = voices.find(v => v.lang.startsWith('th-TH'));
                 } 
                 else if (lang === 'en-US') {
-                    // ใช้อัตรา 1.0 สำหรับ Name และ Word เพื่อความชัดเจน
                     targetVoice = voices.find(v => v.lang.startsWith('en-US'));
                 }
                 
@@ -283,7 +305,6 @@
                  speakText(currentVocab.english, 'en-US', 1.0);
             }
         }
-        // ลบ speakPhonicsSound() ออกไป
 
         // --- Game Logic ---
         function startLesson(category) {
@@ -299,7 +320,6 @@
                 
                 // แสดงผลตามโครงสร้างใหม่
                 alphabetLetter.textContent = currentVocab.letter; 
-                // phonicsSoundDisplay.textContent = ""; // ลบการแสดงผล Phonics
                 alphabetIcon.textContent = currentVocab.icon;
                 alphabetWord.textContent = currentVocab.english; 
                 thaiWord.textContent = currentVocab.thai; 
@@ -323,7 +343,6 @@
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex >= currentCategoryVocabs.length - 1;
             }
-            // เปลี่ยนข้อความบนปุ่ม Play All
             playPauseBtn.textContent = isPlaying ? 'Pause ⏸️' : 'Play All 🔄';
         }
 
