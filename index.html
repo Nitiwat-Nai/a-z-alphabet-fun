@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-Z Phonics: Name, Sound, and Word</title>
+    <title>A-Z ABC Practice (Mobile First)</title>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&family=Mali:wght@600&display=swap');
 
         /* สีสันใหม่ที่สดใสและมีธีม */
         :root {
-            --color-primary: #FF6B6B; /* Coral Red - หัวใจ/รัก */
-            --color-secondary: #4ECDC4; /* Light Teal - สดชื่น/สงบ */
-            --color-accent: #FFE66D; /* Sunny Yellow - สดใส/วันหยุด */
-            --color-background-start: #A29BFE; /* Light Purple */
-            --color-background-end: #FDCB6E; /* Orange-Yellow */
-            --text-color: #2c3e50; /* Dark Blue Gray */
+            --color-primary: #FF6B6B; 
+            --color-secondary: #4ECDC4; 
+            --color-accent: #FFE66D; 
+            --color-background-start: #A29BFE; 
+            --color-background-end: #FDCB6E; 
+            --text-color: #2c3e50; 
             --card-color: #FFFFFF;
         }
 
@@ -24,135 +24,138 @@
             background: linear-gradient(135deg, var(--color-background-start), var(--color-background-end));
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 10px; /* ลด padding เพื่อให้เต็มจอมือถือ */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             text-align: center;
         }
-
+        
+        /* เน้นให้ container ใช้พื้นที่เต็มที่ในแนวนอนบนมือถือ */
         .container {
             background-color: var(--card-color);
-            padding: 2.5rem;
-            border-radius: 30px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
+            padding: 1.5rem; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
             width: 100%;
-            max-width: 700px;
+            max-width: 450px; /* จำกัดความกว้างสำหรับมือถือ */
             box-sizing: border-box;
-            border: 5px solid var(--color-primary); 
+            border: 4px solid var(--color-primary); 
         }
 
         h1 {
             color: var(--color-primary);
             font-family: 'Mali', cursive;
-            font-size: 3.5em;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            line-height: 1.2;
-        }
-        
-        /* Lesson Page (เป็นหน้าหลัก) */
-        #lesson-page { display: block; } 
-        #vocab-card {
-            background-color: var(--color-primary); 
-            border-radius: 25px;
-            padding: 3rem 2rem;
-            min-height: 320px; 
-            /* เปลี่ยนจาก flex เป็น block เพื่อให้แต่ละองค์ประกอบขึ้นบรรทัดใหม่ */
-            display: block; 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            border: 4px solid var(--color-accent); 
+            font-size: 2.2em; /* ลดขนาดหัวข้อ */
             margin-bottom: 1.5rem;
         }
 
-        /* New style for the letter and word combination */
+        #lesson-page { display: block; } 
+        #vocab-card {
+            background-color: var(--color-primary); 
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            min-height: 250px; 
+            display: block; 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--color-accent); 
+            margin-bottom: 1.5rem;
+        }
+
+        /* การแสดงผลแต่ละบรรทัด */
         .alphabet-display {
-            /* ไม่จำเป็นต้องใช้ flex ในการจัดเรียง แต่เก็บไว้เพื่อรวมองค์ประกอบ */
             margin-bottom: 10px;
         }
         
-        /* สไตล์สำหรับตัวอักษรพิมพ์ใหญ่-เล็ก (บรรทัดแรก) */
+        /* บรรทัดที่ 1: ตัวอักษร */
         .alphabet-letter {
-            font-size: 5.5em; 
+            font-size: 4.5em; /* ขนาดใหญ่สำหรับตัวอักษร */
             line-height: 1.1;
-            display: block; /* ขึ้นบรรทัดใหม่ */
-            margin-bottom: 15px; 
+            display: block; 
+            margin-bottom: 10px; 
         }
         
-        /* สไตล์สำหรับ Phonics Sound (บรรทัดที่สอง) */
-        .phonics-sound {
-            font-size: 3.0em; 
+        /* บรรทัดที่ 2: ไอคอน */
+        #alphabet-icon {
+            font-size: 3.5em; /* ขนาดไอคอน */
+            line-height: 1.1;
+            display: block; 
+            margin-bottom: 10px; 
+        }
+        
+        /* บรรทัดที่ 3: คำศัพท์ภาษาอังกฤษ */
+        #alphabet-word {
+            font-size: 2.5em; 
             color: var(--color-accent); 
             font-weight: 700;
             line-height: 1.1;
-            display: block; /* ขึ้นบรรทัดใหม่ */
+            display: block; 
             margin-bottom: 15px; 
         }
-        
-        /* สไตล์สำหรับไอคอนและคำศัพท์ (บรรทัดที่สามและสี่) */
-        .alphabet-word {
-            font-size: 3.5em; 
-            line-height: 1.1;
-            display: block; /* ขึ้นบรรทัดใหม่ */
-            margin-bottom: 5px; 
-        }
 
-        /* สไตล์สำหรับความหมายภาษาไทย (บรรทัดสุดท้าย) */
+        /* บรรทัดที่ 4: ความหมายภาษาไทย */
         #thai-word {
-            font-size: 3.5em;
+            font-size: 2.5em;
             color: var(--card-color); 
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-            display: block; /* ขึ้นบรรทัดใหม่ */
+            display: block; 
             margin-top: 15px;
         }
 
+        /* จัดกลุ่มปุ่ม (เน้นให้ปุ่มใหญ่และเหมาะสมกับมือถือ) */
         .control-group {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
+            justify-content: space-around; /* กระจายปุ่มให้สวยงาม */
+            gap: 0.5rem; 
             margin-top: 1rem;
         }
         .control-group button {
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1.1em;
+            padding: 10px 15px; /* ขนาดปุ่มที่เหมาะสมกับมือถือ */
+            border-radius: 40px;
+            font-size: 1.0em;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
             transition: all 0.2s ease-in-out;
+            flex-grow: 1; /* ให้ปุ่มขยายเต็มพื้นที่ */
+            min-width: 90px; /* กำหนดความกว้างขั้นต่ำ */
         }
-        .control-group button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2); }
-        .control-group button:active { transform: translateY(1px); box-shadow: none; }
-        .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
-
+        
         /* สีปุ่มควบคุม */
-        .audio-btn { background-color: #1ABC9C; box-shadow: 4px 0 #16A085; } /* Turquoise Green */
-        .audio-btn:hover { background-color: #16A085; }
-        .phonics-btn { background-color: #3498DB; box-shadow: 4px 0 #2980B9; } /* Blue */
-        .phonics-btn:hover { background-color: #2980B9; }
-        .nav-btn { background-color: #F39C12; box-shadow: 4px 0 #E67E22; } /* Orange */
-        .nav-btn:hover { background-color: #E67E22; }
-        .play-btn { background-color: #9B59B6; box-shadow: 4px 0 #8E44AD; } /* Amethyst Purple */
-        .play-btn:hover { background-color: #8E44AD; }
+        .audio-btn { background-color: #1ABC9C; box-shadow: 3px 0 #16A085; }
+        .nav-btn { background-color: #F39C12; box-shadow: 3px 0 #E67E22; }
+        .play-btn { background-color: #9B59B6; box-shadow: 3px 0 #8E44AD; }
+        
+        /* Media Query: สำหรับหน้าจอที่กว้างขึ้น (เช่น iPad หรือ Desktop) */
+        @media (min-width: 600px) {
+            .control-group {
+                gap: 1rem;
+            }
+            .control-group button {
+                min-width: 120px; 
+            }
+        }
+
+        /* ตัด Phonics Button Style ออก */
+
     </style>
 </head>
 <body>
 
     <div class="container">
         <div id="category-page" style="display: none;">
-            <h1>🎉 A-Z Phonics: Name, Sound, and Word</h1>
+            <h1>🎉 A-Z Letter and Word Practice</h1>
         </div>
 
         <div id="lesson-page">
-            <h1 id="lesson-title" style="font-size: 2.5em;">A-Z Name, Sound & Word 🔤</h1> 
+            <h1 id="lesson-title">ABC: Name, Word & Thai 🗣️</h1> 
             <div id="vocab-card">
                 <div id="alphabet-display" class="alphabet-display">
                     <span id="alphabet-letter" class="word alphabet-letter">...</span> 
-                    <span id="phonics-sound" class="phonics-sound">...</span>
                     <span id="alphabet-icon" class="alphabet-word">...</span> 
                     <span id="alphabet-word" class="word alphabet-word">...</span> 
                 </div>
@@ -160,17 +163,16 @@
             </div>
             
             <div class="control-group">
-                <button id="prev-btn" class="nav-btn">◀️ ก่อนหน้า</button>
-                <button id="next-btn" class="nav-btn">ถัดไป ▶️</button>
+                <button id="prev-btn" class="nav-btn">◀️ Back</button>
+                <button id="next-btn" class="nav-btn">Next ▶️</button>
             </div>
             <div class="control-group">
                 <button onclick="speakLetterName()" class="audio-btn">Name (EN) 🗣️</button>
-                <button onclick="speakPhonicsSound()" class="phonics-btn">Sound (EN) 📢</button>
                 <button onclick="speakEnglishWord()" class="audio-btn">Word (EN) 🔊</button>
                 <button onclick="speakText(currentVocab.thai, 'th-TH', 1.1)" class="audio-btn">Thai (TH) 🇹🇭</button>
             </div>
             <div class="control-group">
-                <button id="play-pause-btn" class="play-btn">Play All (4 Steps) 🔄</button>
+                <button id="play-pause-btn" class="play-btn">Play All 🔄</button>
                 <button id="stop-btn" class="play-btn">Stop ⏹️</button>
             </div>
         </div>
@@ -181,34 +183,34 @@
         const PAUSE_TIME = 500; 
         
         const vocabularyData = {
-            // ชุดข้อมูล Jolly Phonics (รวม Name และ Sound)
+            // ชุดข้อมูลที่ตัด Phonics ออกทั้งหมด
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "A", phonics: "/ă/", phonicsSound: "a", english: "Ant", thai: "มด" }, 
-                { letter: "B b", icon: "🏀", letterName: "BEE", phonics: "/b/", phonicsSound: "b", english: "Ball", thai: "ลูกบอล" }, 
-                { letter: "C c", icon: "🐈", letterName: "SEE", phonics: "/k/", phonicsSound: "k", english: "Cat", thai: "แมว" },
-                { letter: "D d", icon: "🐶", letterName: "DEE", phonics: "/d/", phonicsSound: "d", english: "Dog", thai: "สุนัข" },
-                { letter: "E e", icon: "🐘", letterName: "E", phonics: "/ĕ/", phonicsSound: "e", english: "Elephant", thai: "ช้าง" },
-                { letter: "F f", icon: "🐟", letterName: "EF", phonics: "/f/", phonicsSound: "f", english: "Fish", thai: "ปลา" },
-                { letter: "G g", icon: "🦒", letterName: "GEE", phonics: "/g/", phonicsSound: "g", english: "Giraffe", thai: "ยีราฟ" },
-                { letter: "H h", icon: "🏠", letterName: "H", phonics: "/h/", phonicsSound: "h", english: "House", thai: "บ้าน" },
-                { letter: "I i", icon: "🍦", letterName: "I", phonics: "/ĭ/", phonicsSound: "i", english: "Ice cream", thai: "ไอศกรีม" },
-                { letter: "J j", icon: "🏺", letterName: "JAY", phonics: "/j/", phonicsSound: "j", english: "Jar", thai: "โถ, ไห" }, 
-                { letter: "K k", icon: "🔑", letterName: "KAY", phonics: "/k/", phonicsSound: "k", english: "Key", thai: "กุญแจ" },
-                { letter: "L l", icon: "🦁", letterName: "EL", phonics: "/l/", phonicsSound: "l", english: "Lion", thai: "สิงโต" }, 
-                { letter: "M m", icon: "🐒", letterName: "EM", phonics: "/m/", phonicsSound: "m", english: "Monkey", thai: "ลิง" }, 
-                { letter: "N n", icon: "👃", letterName: "EN", phonics: "/n/", phonicsSound: "n", english: "Nose", thai: "จมูก" }, 
-                { letter: "O o", icon: "🍊", letterName: "O", phonics: "/ŏ/", phonicsSound: "o", english: "Orange", thai: "ส้ม" },
-                { letter: "P p", icon: "🐷", letterName: "PEE", phonics: "/p/", phonicsSound: "p", english: "Pig", thai: "หมู" },
-                { letter: "Q q", icon: "👑", letterName: "KYU", phonics: "/kw/", phonicsSound: "kw", english: "Queen", thai: "พระราชินี" },
-                { letter: "R r", icon: "🐰", letterName: "AR", phonics: "/r/", phonicsSound: "r", english: "Rabbit", thai: "กระต่าย" },
-                { letter: "S s", icon: "☀️", letterName: "ES", phonics: "/s/", phonicsSound: "s", english: "Sun", thai: "ดวงอาทิตย์" },
-                { letter: "T t", icon: "🐯", letterName: "TEE", phonics: "/t/", phonicsSound: "t", english: "Tiger", thai: "เสือ" },
-                { letter: "U u", icon: "☂️", letterName: "U", phonics: "/ŭ/", phonicsSound: "u", english: "Umbrella", thai: "ร่ม" },
-                { letter: "V v", icon: "🎻", letterName: "VEE", phonics: "/v/", phonicsSound: "v", english: "Violin", thai: "ไวโอลิน" },
-                { letter: "W w", icon: "⌚", letterName: "W", phonics: "/w/", phonicsSound: "w", english: "Watch", thai: "นาฬิกาข้อมือ" },
-                { letter: "X x", icon: "🎹", letterName: "EX", phonics: "/ks/", phonicsSound: "kss", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
-                { letter: "Y y", icon: "⛵", letterName: "WHY", phonics: "/y/", phonicsSound: "y", english: "Yacht", thai: "เรือยอชท์" }, 
-                { letter: "Z z", icon: "🦓", letterName: "ZEE", phonics: "/z/", phonicsSound: "z", english: "Zebra", thai: "ม้าลาย" }
+                { letter: "A a", icon: "🐜", letterName: "A", english: "Ant", thai: "มด" }, 
+                { letter: "B b", icon: "🏀", letterName: "BEE", english: "Ball", thai: "ลูกบอล" }, 
+                { letter: "C c", icon: "🐈", letterName: "SEE", english: "Cat", thai: "แมว" },
+                { letter: "D d", icon: "🐶", letterName: "DEE", english: "Dog", thai: "สุนัข" },
+                { letter: "E e", icon: "🐘", letterName: "E", english: "Elephant", thai: "ช้าง" },
+                { letter: "F f", icon: "🐟", letterName: "EF", english: "Fish", thai: "ปลา" },
+                { letter: "G g", icon: "🦒", letterName: "GEE", english: "Giraffe", thai: "ยีราฟ" },
+                { letter: "H h", icon: "🏠", letterName: "H", english: "House", thai: "บ้าน" },
+                { letter: "I i", icon: "🍦", letterName: "I", english: "Ice cream", thai: "ไอศกรีม" },
+                { letter: "J j", icon: "🏺", letterName: "JAY", english: "Jar", thai: "โถ, ไห" }, 
+                { letter: "K k", icon: "🔑", letterName: "KAY", english: "Key", thai: "กุญแจ" },
+                { letter: "L l", icon: "🦁", letterName: "EL", english: "Lion", thai: "สิงโต" }, 
+                { letter: "M m", icon: "🐒", letterName: "EM", english: "Monkey", thai: "ลิง" }, 
+                { letter: "N n", icon: "👃", letterName: "EN", english: "Nose", thai: "จมูก" }, 
+                { letter: "O o", icon: "🍊", letterName: "O", english: "Orange", thai: "ส้ม" },
+                { letter: "P p", icon: "🐷", letterName: "PEE", english: "Pig", thai: "หมู" },
+                { letter: "Q q", letterName: "KYU", icon: "👑", english: "Queen", thai: "พระราชินี" },
+                { letter: "R r", icon: "🐰", letterName: "AR", english: "Rabbit", thai: "กระต่าย" },
+                { letter: "S s", icon: "☀️", letterName: "ES", english: "Sun", thai: "ดวงอาทิตย์" },
+                { letter: "T t", icon: "🐯", letterName: "TEE", english: "Tiger", thai: "เสือ" },
+                { letter: "U u", icon: "☂️", letterName: "U", english: "Umbrella", thai: "ร่ม" },
+                { letter: "V v", icon: "🎻", letterName: "VEE", english: "Violin", thai: "ไวโอลิน" },
+                { letter: "W w", icon: "⌚", letterName: "W", english: "Watch", thai: "นาฬิกาข้อมือ" },
+                { letter: "X x", icon: "🎹", letterName: "EX", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
+                { letter: "Y y", icon: "⛵", letterName: "WHY", english: "Yacht", thai: "เรือยอชท์" }, 
+                { letter: "Z z", icon: "🦓", letterName: "ZEE", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
         // ----------------------------------------------------
@@ -217,9 +219,9 @@
         const lessonPage = document.getElementById('lesson-page');
         const thaiWord = document.getElementById('thai-word');
         const alphabetLetter = document.getElementById('alphabet-letter'); 
-        const phonicsSoundDisplay = document.getElementById('phonics-sound'); 
+        // ลบ phonicsSoundDisplay ออก เพราะไม่มีการใช้
         const alphabetWord = document.getElementById('alphabet-word'); 
-        const alphabetIcon = document.getElementById('alphabet-icon'); // องค์ประกอบใหม่สำหรับไอคอน
+        const alphabetIcon = document.getElementById('alphabet-icon'); 
         const playPauseBtn = document.getElementById('play-pause-btn');
         const nextBtn = document.getElementById('next-btn');
         const prevBtn = document.getElementById('prev-btn');
@@ -255,6 +257,7 @@
                     targetVoice = voices.find(v => v.lang.startsWith('th-TH'));
                 } 
                 else if (lang === 'en-US') {
+                    // ใช้อัตรา 1.0 สำหรับ Name และ Word เพื่อความชัดเจน
                     targetVoice = voices.find(v => v.lang.startsWith('en-US'));
                 }
                 
@@ -275,16 +278,12 @@
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
-        function speakPhonicsSound() {
-            if(currentVocab.phonicsSound) {
-                 speakText(currentVocab.phonicsSound, 'en-US', 0.9); // Jolly Phonics ใช้ rate ช้าลง
-            }
-        }
         function speakEnglishWord() {
             if(currentVocab.english) {
                  speakText(currentVocab.english, 'en-US', 1.0);
             }
         }
+        // ลบ speakPhonicsSound() ออกไป
 
         // --- Game Logic ---
         function startLesson(category) {
@@ -299,23 +298,14 @@
                 currentVocab = currentCategoryVocabs[currentIndex];
                 
                 // แสดงผลตามโครงสร้างใหม่
-                // บรรทัดที่ 1: ตัวอักษรพิมพ์ใหญ่ ตัวอักษรพิมพ์เล็ก
                 alphabetLetter.textContent = currentVocab.letter; 
-                // บรรทัดที่ 2: สัญลักษณ์ Phonics เท่านั้น
-                phonicsSoundDisplay.textContent = currentVocab.phonics; 
-                // บรรทัดที่ 3: ไอคอน
+                // phonicsSoundDisplay.textContent = ""; // ลบการแสดงผล Phonics
                 alphabetIcon.textContent = currentVocab.icon;
-                // บรรทัดที่ 4: คำศัพท์ภาษาอังกฤษ
                 alphabetWord.textContent = currentVocab.english; 
-                // บรรทัดที่ 5: ความหมายภาษาไทย
                 thaiWord.textContent = currentVocab.thai; 
 
-                // อัปเดตข้อความบนปุ่ม Phonics
-                document.querySelector('.phonics-btn').textContent = `Sound (${currentVocab.phonics}) 📢`;
-                
             } else {
                 alphabetLetter.textContent = "Finished! 🥳";
-                phonicsSoundDisplay.textContent = "";
                 alphabetIcon.textContent = "";
                 alphabetWord.textContent = "แล้วเจอกันใหม่นะ!";
                 thaiWord.textContent = "จบแล้ว! 🎉";
@@ -334,7 +324,7 @@
                 nextBtn.disabled = currentIndex >= currentCategoryVocabs.length - 1;
             }
             // เปลี่ยนข้อความบนปุ่ม Play All
-            playPauseBtn.textContent = isPlaying ? 'Pause ⏸️' : 'Play All (Name, Sound, Word, TH) 🔄';
+            playPauseBtn.textContent = isPlaying ? 'Pause ⏸️' : 'Play All 🔄';
         }
 
         function nextVocab() {
@@ -353,7 +343,7 @@
             }
         }
 
-        // --- ฟังก์ชันหลักสำหรับการเล่นเสียงอัตโนมัติ (4 ขั้นตอน + Pause) ---
+        // --- ฟังก์ชันหลักสำหรับการเล่นเสียงอัตโนมัติ (3 ขั้นตอน + Pause) ---
         function playCurrentVocabAuto() {
             if (currentIndex >= currentCategoryVocabs.length) {
                 stopAutoPlay();
@@ -362,32 +352,25 @@
             }
             const currentVocabToPlay = currentCategoryVocabs[currentIndex];
             
-            // 1. เล่นชื่อตัวอักษร (Letter Name) (อัตรา 1.0)
+            // 1. เล่นชื่อตัวอักษร (Letter Name)
             speakText(currentVocabToPlay.letterName, 'en-US', 1.0, () => {
                 
                 // หน่วงเวลา 0.5 วินาที
                 setTimeout(() => {
-                    // 2. เล่นเสียง Phonics (Pure Sound) (อัตรา 0.9)
-                    speakText(currentVocabToPlay.phonicsSound, 'en-US', 0.9, () => {
+                    // 2. เล่นเสียงคำศัพท์ (เช่น "Ant")
+                    speakText(currentVocabToPlay.english, 'en-US', 1.0, () => {
                         
                         // หน่วงเวลา 0.5 วินาที
                         setTimeout(() => {
-                            // 3. เล่นเสียงคำศัพท์ (เช่น "Ant") (อัตรา 1.0)
-                            speakText(currentVocabToPlay.english, 'en-US', 1.0, () => {
-                                
-                                // หน่วงเวลา 0.5 วินาที
-                                setTimeout(() => {
-                                    // 4. เล่นภาษาไทย (เช่น "มด") (อัตรา 1.1)
-                                    speakText(currentVocabToPlay.thai, 'th-TH', 1.1, () => {
-                                        if (isPlaying) {
-                                            currentIndex++;
-                                            displayVocab();
-                                            updateButtonState();
-                                            // หน่วงเวลา 1 วินาที ก่อนไปคำถัดไป
-                                            setTimeout(playCurrentVocabAuto, 1000); 
-                                        }
-                                    });
-                                }, PAUSE_TIME); 
+                            // 3. เล่นภาษาไทย (เช่น "มด")
+                            speakText(currentVocabToPlay.thai, 'th-TH', 1.1, () => {
+                                if (isPlaying) {
+                                    currentIndex++;
+                                    displayVocab();
+                                    updateButtonState();
+                                    // หน่วงเวลา 1 วินาที ก่อนไปคำถัดไป
+                                    setTimeout(playCurrentVocabAuto, 1000); 
+                                }
                             });
                         }, PAUSE_TIME); 
                     });
