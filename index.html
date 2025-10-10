@@ -128,7 +128,8 @@
         .control-row {
             display: flex;
             width: 100%;
-            justify-content: space-between;
+            /* ใช้ space-between เพื่อกระจายปุ่มออก */
+            justify-content: space-between; 
             margin-bottom: 15px; 
             gap: 10px; 
         }
@@ -138,13 +139,17 @@
             color: white;
             padding: 12px 0; 
             border: none; 
-            border-radius: 50px; 
+            border-radius: 50px; /* ทำให้โค้งมน */
             font-size: 1.0em;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.1s ease-out;
             
-            /* มิติ (Overlay Effect) - ปรับ Shadow ให้ดูนูนขึ้น */
+            /* ทำให้ปุ่มในแถวมีขนาดเท่ากันทั้งหมด */
+            flex-grow: 1; 
+            flex-basis: 0; 
+
+            /* มิติ (Overlay Effect) */
             box-shadow: inset 0 2px 3px var(--shadow-light), 
                         0 5px 0 0 rgba(0, 0, 0, 0.3), 
                         0 8px 15px rgba(0, 0, 0, 0.15); 
@@ -166,20 +171,18 @@
         }
         
 
-        /* การกำหนดสีปุ่ม */
-        .nav-btn { background-color: #F39C12; } 
-        .audio-btn { background-color: #1ABC9C; } 
-        .play-btn { background-color: #9B59B6; } 
+        /* การกำหนดสีปุ่ม (กำหนดใหม่ตามฟังก์ชัน) */
+        .nav-btn { background-color: #F39C12; }      /* Back, Next */
+        .play-btn { background-color: #9B59B6; }     /* Play All, Stop */
+        .audio-btn { background-color: #1ABC9C; }    /* Name, Word, Thai */
         
-        /* กำหนดขนาดปุ่มในแถว Navigation/Flow (4 ปุ่ม) */
-        .control-row.row-flow button {
+        /* ลบการกำหนดขนาดแบบ fixed ของแถวเก่าออก */
+        /* .control-row.row-flow button {
             flex-basis: calc(25% - 8px); 
         }
-
-        /* กำหนดขนาดปุ่มในแถว Audio (3 ปุ่ม) */
         .control-row.row-audio button {
             flex-basis: calc(33.33% - 7px);
-        }
+        } */
 
     </style>
 </head>
@@ -222,7 +225,7 @@
         const vocabularyData = {
             // ใช้ phonetic spelling ที่ถูกต้องเพื่อให้ระบบออกเสียงชื่อตัวอักษรโดยไม่เพิ่มคำว่า "Capital"
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "Ae", english: "Ant", thai: "มด" }, // แก้ไข: Aei -> Ae
+                { letter: "A a", icon: "🐜", letterName: "Ae", english: "Ant", thai: "มด" }, 
                 { letter: "B b", icon: "🏀", letterName: "Bee", english: "Ball", thai: "ลูกบอล" }, 
                 { letter: "C c", icon: "🐈", letterName: "See", english: "Cat", thai: "แมว" },
                 { letter: "D d", icon: "🐶", letterName: "Dee", english: "Dog", thai: "สุนัข" },
