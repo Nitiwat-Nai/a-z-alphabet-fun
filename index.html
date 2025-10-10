@@ -222,7 +222,7 @@
         const vocabularyData = {
             // ใช้ phonetic spelling ที่ถูกต้องเพื่อให้ระบบออกเสียงชื่อตัวอักษรโดยไม่เพิ่มคำว่า "Capital"
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "Aye", english: "Ant", thai: "มด" }, // แก้ไข: Aay -> Aye
+                { letter: "A a", icon: "🐜", letterName: "Aei", english: "Ant", thai: "มด" }, // แก้ไข: Aye -> Aei (ควรออกเสียงเป็น "เอ" ได้แม่นยำขึ้น)
                 { letter: "B b", icon: "🏀", letterName: "Bee", english: "Ball", thai: "ลูกบอล" }, 
                 { letter: "C c", icon: "🐈", letterName: "See", english: "Cat", thai: "แมว" },
                 { letter: "D d", icon: "🐶", letterName: "Dee", english: "Dog", thai: "สุนัข" },
@@ -240,7 +240,7 @@
                 { letter: "P p", icon: "🐷", letterName: "Pee", english: "Pig", thai: "หมู" },
                 { letter: "Q q", letterName: "Queue", icon: "👑", english: "Queen", thai: "พระราชินี" }, 
                 { letter: "R r", icon: "🐰", letterName: "Ar", english: "Rabbit", thai: "กระต่าย" }, 
-                { letter: "S s", icon: "☀️", letterName: "Ess", english: "Sun", thai: "ดวงอาทิตย์" }, // แก้ไข: Es -> Ess
+                { letter: "S s", icon: "☀️", letterName: "Ess", english: "Sun", thai: "ดวงอาทิตย์" }, // Ess ยังคงเป็น "เอส"
                 { letter: "T t", icon: "🐯", letterName: "Tee", english: "Tiger", thai: "เสือ" },
                 { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, 
                 { letter: "V v", icon: "🎻", letterName: "Vee", english: "Violin", thai: "ไวโอลิน" },
@@ -293,7 +293,7 @@
         // ฟังก์ชันพูดสำหรับปุ่มกด
         function speakLetterName() {
             if(currentVocab.letterName) {
-                 // ใช้ค่า phonetic spelling ที่ถูกต้อง (Aye, Ess)
+                 // ใช้ค่า phonetic spelling ที่ถูกต้อง (Aei, Ess)
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
