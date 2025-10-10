@@ -83,9 +83,9 @@
                          6px 6px 0 var(--shadow-dark); 
         }
         
-        /* สไตล์สำหรับไอคอน - ปรับขนาดเป็น 6.5em เพื่อให้เท่ากับตัวอักษรหลัก */
+        /* สไตล์สำหรับไอคอน */
         #alphabet-icon {
-            font-size: 6.5em; /* ปรับขนาดให้เท่ากับ .alphabet-letter */
+            font-size: 6.5em; 
             line-height: 1.1;
             display: block; 
             margin-bottom: 10px; 
@@ -110,6 +110,18 @@
             margin-top: 15px;
         }
         
+        /* ------------------------------------------------ */
+        /* สไตล์พิเศษสำหรับหน้าจบ (Finished!) */
+        /* ------------------------------------------------ */
+        .finished-text {
+            font-size: 5.5em !important; /* ปรับขนาดให้เล็กลงจาก 6.5em เพื่อให้พอดีกับกรอบด้านกว้าง */
+            font-weight: 800;
+            color: var(--color-accent) !important;
+            text-shadow: 4px 4px 0 var(--shadow-dark);
+            line-height: 1;
+        }
+
+
         /* ------------------------------------------------ */
         /* จัดกลุ่มปุ่มเป็น 2 แถว และเพิ่มมิติ (Overlay) */
         /* ------------------------------------------------ */
@@ -208,33 +220,33 @@
         const PAUSE_TIME = 500; 
         
         const vocabularyData = {
-            // ปรับปรุงค่า letterName ให้เป็น Phonetic Spelling เพื่อแก้ปัญหาเสียงนำหน้าผิดเพี้ยน
+            // ชุดข้อมูล
             "อักษร A-Z 🔤": [
                 { letter: "A a", icon: "🐜", letterName: "Aay", english: "Ant", thai: "มด" }, 
                 { letter: "B b", icon: "🏀", letterName: "BEE", english: "Ball", thai: "ลูกบอล" }, 
                 { letter: "C c", icon: "🐈", letterName: "SEE", english: "Cat", thai: "แมว" },
                 { letter: "D d", icon: "🐶", letterName: "DEE", english: "Dog", thai: "สุนัข" },
-                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, // แก้ไข E -> Ee
+                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, 
                 { letter: "F f", icon: "🐟", letterName: "EF", english: "Fish", thai: "ปลา" },
                 { letter: "G g", icon: "🦒", letterName: "GEE", english: "Giraffe", thai: "ยีราฟ" },
-                { letter: "H h", icon: "🏠", letterName: "Aich", english: "House", thai: "บ้าน" }, // แก้ไข H -> Aich
-                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, // แก้ไข I -> Eye
+                { letter: "H h", icon: "🏠", letterName: "Aich", english: "House", thai: "บ้าน" }, 
+                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, 
                 { letter: "J j", icon: "🏺", letterName: "JAY", english: "Jar", thai: "โถ, ไห" }, 
                 { letter: "K k", icon: "🔑", letterName: "KAY", english: "Key", thai: "กุญแจ" },
                 { letter: "L l", icon: "🦁", letterName: "EL", english: "Lion", thai: "สิงโต" }, 
                 { letter: "M m", icon: "🐒", letterName: "EM", english: "Monkey", thai: "ลิง" }, 
                 { letter: "N n", icon: "👃", letterName: "EN", english: "Nose", thai: "จมูก" }, 
-                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, // แก้ไข O -> Oh
+                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, 
                 { letter: "P p", icon: "🐷", letterName: "PEE", english: "Pig", thai: "หมู" },
                 { letter: "Q q", letterName: "KYU", icon: "👑", english: "Queen", thai: "พระราชินี" },
                 { letter: "R r", icon: "🐰", letterName: "AR", english: "Rabbit", thai: "กระต่าย" },
                 { letter: "S s", icon: "☀️", letterName: "ES", english: "Sun", thai: "ดวงอาทิตย์" },
                 { letter: "T t", icon: "🐯", letterName: "TEE", english: "Tiger", thai: "เสือ" },
-                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, // แก้ไข U -> Yoo
+                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, 
                 { letter: "V v", icon: "🎻", letterName: "VEE", english: "Violin", thai: "ไวโอลิน" },
-                { letter: "W w", icon: "⌚", letterName: "Dubble Yoo", english: "Watch", thai: "นาฬิกาข้อมือ" }, // แก้ไข W -> Dubble Yoo
+                { letter: "W w", icon: "⌚", letterName: "Dubble Yoo", english: "Watch", thai: "นาฬิกาข้อมือ" }, 
                 { letter: "X x", icon: "🎹", letterName: "EX", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
-                { letter: "Y y", icon: "⛵", letterName: "Wai", english: "Yacht", thai: "เรือยอชท์" }, // แก้ไข Y -> Wai
+                { letter: "Y y", icon: "⛵", letterName: "Wai", english: "Yacht", thai: "เรือยอชท์" }, 
                 { letter: "Z z", icon: "🦓", letterName: "ZEE", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
@@ -297,7 +309,6 @@
         // ฟังก์ชันพูดสำหรับปุ่มกด
         function speakLetterName() {
             if(currentVocab.letterName) {
-                 // ใช้ค่า letterName ที่ถูกแก้ไขแล้ว
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
@@ -319,14 +330,17 @@
             if (currentIndex < currentCategoryVocabs.length) {
                 currentVocab = currentCategoryVocabs[currentIndex];
                 
-                // แสดงผล
+                // แสดงผลปกติ
                 alphabetLetter.textContent = currentVocab.letter; 
+                alphabetLetter.classList.remove('finished-text'); // ลบ class finished-text ออก
                 alphabetIcon.textContent = currentVocab.icon;
                 alphabetWord.textContent = currentVocab.english; 
                 thaiWord.textContent = currentVocab.thai; 
 
             } else {
+                // แสดงผลเมื่อจบ
                 alphabetLetter.textContent = "Finished! 🥳";
+                alphabetLetter.classList.add('finished-text'); // เพิ่ม class finished-text
                 alphabetIcon.textContent = "";
                 alphabetWord.textContent = "แล้วเจอกันใหม่นะ!";
                 thaiWord.textContent = "จบแล้ว! 🎉";
