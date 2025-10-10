@@ -220,34 +220,34 @@
         const PAUSE_TIME = 500; 
         
         const vocabularyData = {
-            // ใช้ตัวอักษรเดี่ยวตามที่ร้องขอ
+            // ใช้ phonetic spelling ที่ถูกต้องเพื่อให้ระบบออกเสียงชื่อตัวอักษรโดยไม่เพิ่มคำว่า "Capital"
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "A", english: "Ant", thai: "มด" }, 
-                { letter: "B b", icon: "🏀", letterName: "B", english: "Ball", thai: "ลูกบอล" }, 
-                { letter: "C c", icon: "🐈", letterName: "C", english: "Cat", thai: "แมว" },
-                { letter: "D d", icon: "🐶", letterName: "D", english: "Dog", thai: "สุนัข" },
-                { letter: "E e", icon: "🐘", letterName: "E", english: "Elephant", thai: "ช้าง" }, 
-                { letter: "F f", icon: "🐟", letterName: "F", english: "Fish", thai: "ปลา" },
-                { letter: "G g", icon: "🦒", letterName: "G", english: "Giraffe", thai: "ยีราฟ" },
-                { letter: "H h", icon: "🏠", letterName: "H", english: "House", thai: "บ้าน" }, 
-                { letter: "I i", icon: "🍦", letterName: "I", english: "Ice cream", thai: "ไอศกรีม" }, 
-                { letter: "J j", icon: "🏺", letterName: "J", english: "Jar", thai: "โถ, ไห" }, 
-                { letter: "K k", icon: "🔑", letterName: "K", english: "Key", thai: "กุญแจ" },
-                { letter: "L l", icon: "🦁", letterName: "L", english: "Lion", thai: "สิงโต" }, 
-                { letter: "M m", icon: "🐒", letterName: "M", english: "Monkey", thai: "ลิง" }, 
-                { letter: "N n", icon: "👃", letterName: "N", english: "Nose", thai: "จมูก" }, 
-                { letter: "O o", icon: "🍊", letterName: "O", english: "Orange", thai: "ส้ม" }, 
-                { letter: "P p", icon: "🐷", letterName: "P", english: "Pig", thai: "หมู" },
-                { letter: "Q q", letterName: "Q", icon: "👑", english: "Queen", thai: "พระราชินี" },
-                { letter: "R r", icon: "🐰", letterName: "R", english: "Rabbit", thai: "กระต่าย" },
-                { letter: "S s", icon: "☀️", letterName: "S", english: "Sun", thai: "ดวงอาทิตย์" },
-                { letter: "T t", icon: "🐯", letterName: "T", english: "Tiger", thai: "เสือ" },
-                { letter: "U u", icon: "☂️", letterName: "U", english: "Umbrella", thai: "ร่ม" }, 
-                { letter: "V v", icon: "🎻", letterName: "V", english: "Violin", thai: "ไวโอลิน" },
-                { letter: "W w", icon: "⌚", letterName: "W", english: "Watch", thai: "นาฬิกาข้อมือ" }, 
-                { letter: "X x", icon: "🎹", letterName: "X", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
-                { letter: "Y y", icon: "⛵", letterName: "Y", english: "Yacht", thai: "เรือยอชท์" }, 
-                { letter: "Z z", icon: "🦓", letterName: "Z", english: "Zebra", thai: "ม้าลาย" }
+                { letter: "A a", icon: "🐜", letterName: "Aay", english: "Ant", thai: "มด" }, 
+                { letter: "B b", icon: "🏀", letterName: "Bee", english: "Ball", thai: "ลูกบอล" }, 
+                { letter: "C c", icon: "🐈", letterName: "See", english: "Cat", thai: "แมว" },
+                { letter: "D d", icon: "🐶", letterName: "Dee", english: "Dog", thai: "สุนัข" },
+                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, // แก้ไข: ใช้ "Ee" เพื่อเลี่ยง "Capital E"
+                { letter: "F f", icon: "🐟", letterName: "Ef", english: "Fish", thai: "ปลา" },
+                { letter: "G g", icon: "🦒", letterName: "Gee", english: "Giraffe", thai: "ยีราฟ" },
+                { letter: "H h", icon: "🏠", letterName: "Aych", english: "House", thai: "บ้าน" }, // แก้ไข: ใช้ "Aych"
+                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, // แก้ไข: ใช้ "Eye"
+                { letter: "J j", icon: "🏺", letterName: "Jay", english: "Jar", thai: "โถ, ไห" }, 
+                { letter: "K k", icon: "🔑", letterName: "Kay", english: "Key", thai: "กุญแจ" },
+                { letter: "L l", icon: "🦁", letterName: "El", english: "Lion", thai: "สิงโต" }, 
+                { letter: "M m", icon: "🐒", letterName: "Em", english: "Monkey", thai: "ลิง" }, 
+                { letter: "N n", icon: "👃", letterName: "En", english: "Nose", thai: "จมูก" }, 
+                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, // แก้ไข: ใช้ "Oh"
+                { letter: "P p", icon: "🐷", letterName: "Pee", english: "Pig", thai: "หมู" },
+                { letter: "Q q", letterName: "Queue", icon: "👑", english: "Queen", thai: "พระราชินี" }, // แก้ไข: ใช้ "Queue"
+                { letter: "R r", icon: "🐰", letterName: "Ar", english: "Rabbit", thai: "กระต่าย" }, 
+                { letter: "S s", icon: "☀️", letterName: "Es", english: "Sun", thai: "ดวงอาทิตย์" },
+                { letter: "T t", icon: "🐯", letterName: "Tee", english: "Tiger", thai: "เสือ" },
+                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, // แก้ไข: ใช้ "Yoo"
+                { letter: "V v", icon: "🎻", letterName: "Vee", english: "Violin", thai: "ไวโอลิน" },
+                { letter: "W w", icon: "⌚", letterName: "Double U", english: "Watch", thai: "นาฬิกาข้อมือ" }, // แก้ไข: ใช้ "Double U"
+                { letter: "X x", icon: "🎹", letterName: "Ex", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
+                { letter: "Y y", icon: "⛵", letterName: "Wye", english: "Yacht", thai: "เรือยอชท์" }, // แก้ไข: ใช้ "Wye"
+                { letter: "Z z", icon: "🦓", letterName: "Zee", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
         // ----------------------------------------------------
@@ -265,15 +265,10 @@
         let currentCategoryVocabs = [];
         let currentIndex = 0;
         let isPlaying = false;
-        let voices = [];
         let currentVocab = {};
         const alphabetCategoryName = "อักษร A-Z 🔤"; 
 
         // --- Web Speech API ---
-        // ไม่ต้องใช้ onvoiceschanged อีกต่อไป เพราะเราไม่กำหนด voice ในโค้ด
-        if ('speechSynthesis' in window) {
-            // ลบ: window.speechSynthesis.onvoiceschanged = () => { voices = window.speechSynthesis.getVoices(); };
-        }
         
         /**
          * ฟังก์ชันพูดข้อความพร้อมกำหนดภาษาและอัตราความเร็ว
@@ -286,7 +281,7 @@
                 utterance.volume = 1.0; 
                 utterance.rate = rate; 
 
-                // ลบบล็อกการกำหนด voice ออก เพื่อให้ iOS ใช้เสียงเริ่มต้นที่ผู้ใช้เลือก
+                // ไม่มีการกำหนด voice เพื่อให้ระบบ iOS เลือกเสียงตามที่ตั้งค่า
                 
                 if (onEndCallback) {
                     utterance.onend = onEndCallback;
@@ -298,6 +293,7 @@
         // ฟังก์ชันพูดสำหรับปุ่มกด
         function speakLetterName() {
             if(currentVocab.letterName) {
+                 // ใช้ค่า phonetic spelling ที่ถูกต้อง
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
@@ -321,7 +317,7 @@
                 
                 // แสดงผลปกติ
                 alphabetLetter.textContent = currentVocab.letter; 
-                alphabetLetter.classList.remove('finished-text'); // ลบ class finished-text ออก
+                alphabetLetter.classList.remove('finished-text'); 
                 alphabetIcon.textContent = currentVocab.icon;
                 alphabetWord.textContent = currentVocab.english; 
                 thaiWord.textContent = currentVocab.thai; 
@@ -329,7 +325,7 @@
             } else {
                 // แสดงผลเมื่อจบ
                 alphabetLetter.textContent = "Finished! 🥳";
-                alphabetLetter.classList.add('finished-text'); // เพิ่ม class finished-text
+                alphabetLetter.classList.add('finished-text'); 
                 alphabetIcon.textContent = "";
                 alphabetWord.textContent = "แล้วเจอกันใหม่นะ!";
                 thaiWord.textContent = "จบแล้ว! 🎉";
