@@ -222,31 +222,31 @@
         const vocabularyData = {
             // ใช้ phonetic spelling ที่ถูกต้องเพื่อให้ระบบออกเสียงชื่อตัวอักษรโดยไม่เพิ่มคำว่า "Capital"
             "อักษร A-Z 🔤": [
-                { letter: "A a", icon: "🐜", letterName: "Aay", english: "Ant", thai: "มด" }, 
+                { letter: "A a", icon: "🐜", letterName: "Aye", english: "Ant", thai: "มด" }, // แก้ไข: Aay -> Aye
                 { letter: "B b", icon: "🏀", letterName: "Bee", english: "Ball", thai: "ลูกบอล" }, 
                 { letter: "C c", icon: "🐈", letterName: "See", english: "Cat", thai: "แมว" },
                 { letter: "D d", icon: "🐶", letterName: "Dee", english: "Dog", thai: "สุนัข" },
-                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, // แก้ไข: ใช้ "Ee" เพื่อเลี่ยง "Capital E"
+                { letter: "E e", icon: "🐘", letterName: "Ee", english: "Elephant", thai: "ช้าง" }, 
                 { letter: "F f", icon: "🐟", letterName: "Ef", english: "Fish", thai: "ปลา" },
                 { letter: "G g", icon: "🦒", letterName: "Gee", english: "Giraffe", thai: "ยีราฟ" },
-                { letter: "H h", icon: "🏠", letterName: "Aych", english: "House", thai: "บ้าน" }, // แก้ไข: ใช้ "Aych"
-                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, // แก้ไข: ใช้ "Eye"
+                { letter: "H h", icon: "🏠", letterName: "Aych", english: "House", thai: "บ้าน" }, 
+                { letter: "I i", icon: "🍦", letterName: "Eye", english: "Ice cream", thai: "ไอศกรีม" }, 
                 { letter: "J j", icon: "🏺", letterName: "Jay", english: "Jar", thai: "โถ, ไห" }, 
                 { letter: "K k", icon: "🔑", letterName: "Kay", english: "Key", thai: "กุญแจ" },
                 { letter: "L l", icon: "🦁", letterName: "El", english: "Lion", thai: "สิงโต" }, 
                 { letter: "M m", icon: "🐒", letterName: "Em", english: "Monkey", thai: "ลิง" }, 
                 { letter: "N n", icon: "👃", letterName: "En", english: "Nose", thai: "จมูก" }, 
-                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, // แก้ไข: ใช้ "Oh"
+                { letter: "O o", icon: "🍊", letterName: "Oh", english: "Orange", thai: "ส้ม" }, 
                 { letter: "P p", icon: "🐷", letterName: "Pee", english: "Pig", thai: "หมู" },
-                { letter: "Q q", letterName: "Queue", icon: "👑", english: "Queen", thai: "พระราชินี" }, // แก้ไข: ใช้ "Queue"
+                { letter: "Q q", letterName: "Queue", icon: "👑", english: "Queen", thai: "พระราชินี" }, 
                 { letter: "R r", icon: "🐰", letterName: "Ar", english: "Rabbit", thai: "กระต่าย" }, 
-                { letter: "S s", icon: "☀️", letterName: "Es", english: "Sun", thai: "ดวงอาทิตย์" },
+                { letter: "S s", icon: "☀️", letterName: "Ess", english: "Sun", thai: "ดวงอาทิตย์" }, // แก้ไข: Es -> Ess
                 { letter: "T t", icon: "🐯", letterName: "Tee", english: "Tiger", thai: "เสือ" },
-                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, // แก้ไข: ใช้ "Yoo"
+                { letter: "U u", icon: "☂️", letterName: "Yoo", english: "Umbrella", thai: "ร่ม" }, 
                 { letter: "V v", icon: "🎻", letterName: "Vee", english: "Violin", thai: "ไวโอลิน" },
-                { letter: "W w", icon: "⌚", letterName: "Double U", english: "Watch", thai: "นาฬิกาข้อมือ" }, // แก้ไข: ใช้ "Double U"
+                { letter: "W w", icon: "⌚", letterName: "Double U", english: "Watch", thai: "นาฬิกาข้อมือ" }, 
                 { letter: "X x", icon: "🎹", letterName: "Ex", english: "Xylophone", thai: "ระนาดฝรั่ง" }, 
-                { letter: "Y y", icon: "⛵", letterName: "Wye", english: "Yacht", thai: "เรือยอชท์" }, // แก้ไข: ใช้ "Wye"
+                { letter: "Y y", icon: "⛵", letterName: "Wye", english: "Yacht", thai: "เรือยอชท์" }, 
                 { letter: "Z z", icon: "🦓", letterName: "Zee", english: "Zebra", thai: "ม้าลาย" }
             ]
         };
@@ -293,7 +293,7 @@
         // ฟังก์ชันพูดสำหรับปุ่มกด
         function speakLetterName() {
             if(currentVocab.letterName) {
-                 // ใช้ค่า phonetic spelling ที่ถูกต้อง
+                 // ใช้ค่า phonetic spelling ที่ถูกต้อง (Aye, Ess)
                  speakText(currentVocab.letterName, 'en-US', 1.0);
             }
         }
